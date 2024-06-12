@@ -1,0 +1,19 @@
+
+table {
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+  width: 100%;
+  border-radius: 3px;
+}
+:host ::ng-deep tr {
+  border-bottom: 1px solid #ddd;
+}
+
+:host ::ng-deep tr:last-child {
+  border-bottom: none;
+}
+
+:host ::ng-deep th, ::ng-deep app-table td {
+  padding: 8px;
+  text-align: left;
+}

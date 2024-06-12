@@ -1,0 +1,7 @@
+<button class="action"
+        [disabled]="disabled"
+        [attr.type]="submit !== false ? 'submit' : 'button'"
+        [class.formButton]="formButton"
+        [class.danger]="danger">
+  <ng-content></ng-content>
+</button>
