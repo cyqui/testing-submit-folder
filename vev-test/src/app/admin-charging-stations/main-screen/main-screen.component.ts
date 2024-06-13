@@ -5,6 +5,7 @@ import {first, Observable, of} from "rxjs";
 import {TableComponent} from "./table/table.component";
 import {MatDialog} from "@angular/material/dialog";
 import {StopAndDeletePromptComponent} from "./stop-and-delete-prompt/stop-and-delete-prompt.component";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-main-screen',
@@ -22,18 +23,25 @@ export class MainScreenComponent {
   }
   constructor(
     private mainApi: ChargingStationsApiService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
   ) {
   }
 
   ngOnInit() {
     this.stations$ = this.mainApi.find();
   }
+  // factorise duration
+  snack(message: string) {
+    this.snackBar.open(message, undefined, {duration: 5000});
+  }
 
   start(station: ChargingStation) {
+    this.snackBar.open('Creating charge station.')
     this.mainApi.setInUse(station, true).pipe(first()).subscribe(r => {
       this.stations$ = this.mainApi.find();
       this.reRenderTable();
+      this.snack('Charge started');
     });
   }
 
@@ -41,6 +49,7 @@ export class MainScreenComponent {
     this.mainApi.setInUse(station, false).pipe(first()).subscribe(r => {
       this.stations$ = this.mainApi.find();
       this.reRenderTable();
+      this.snack('Charge stopped');
     });
   }
 
@@ -50,6 +59,7 @@ export class MainScreenComponent {
     } else {
       this.mainApi.delete(station).pipe(first()).subscribe(r => {
         this.stations$ = this.mainApi.find();
+        this.snack('Charge station has been successfully removed !');
       });
     }
   }
@@ -57,6 +67,7 @@ export class MainScreenComponent {
   create(station: ChargingStation) {
     this.mainApi.create(station).pipe(first()).subscribe(r => {
       this.stations$ = this.mainApi.find();
+      this.snack('Charge station added');
     });
   }
   // out of time to rework. It's dirty i know and i should probably have used dataSource :(

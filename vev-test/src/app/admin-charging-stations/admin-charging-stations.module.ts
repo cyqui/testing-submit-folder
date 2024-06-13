@@ -13,6 +13,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatDialogModule} from "@angular/material/dialog";
 import {VevApiModule} from "../vev-api/vev-api.module";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 const matModules = [
   MatTableModule,
@@ -20,7 +21,8 @@ const matModules = [
   MatFormFieldModule,
   MatInputModule,
   MatProgressSpinnerModule,
-  MatDialogModule
+  MatDialogModule,
+  MatSnackBarModule
 ];
 
 @NgModule({

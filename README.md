@@ -28,10 +28,11 @@ docker-compose up
 - OK Docker Angular
 - OK Docker Backend
 - OK Docker Mongo with constraint on model/name/brand.
-- KO Visual feedback for frontend actions (create, delete, start/stop)
+- OK Visual feedback for frontend actions (create, delete, start/stop)
 - KO Unit tests on backend
 - KO Make isomockup or at least, pretty (bare material design)
 - KO Doc
+- KO Visual feedback for backend actions (loading)
 - KO Lint 
 - KO Variables for SASS.
 - KO Frontend: 
