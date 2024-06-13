@@ -1,8 +1,15 @@
-export const environment = {
+import {VevApiConfiguration} from "../app/vev-api/types";
+
+export const environment: {
+  vev: VevApiConfiguration
+} = {
   vev: {
     apiRoot: 'http://localhost:3003',
     endpoints: {
-      chargeStation: '/charge-stations'
+      chargeStationList: () => '/charge-stations',
+      chargeStationDelete: (station) => `/charge-stations/${station._id}`,
+      chargeStationUpdate: (station) => `/charge-stations/${station._id}`,
+      chargeStationCreate: () => `/charge-stations`,
     },
   }
 };
