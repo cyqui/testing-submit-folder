@@ -23,7 +23,7 @@ docker-compose up
 - OK Validation of inputs UI & backend
 - OK Toggle charge on
 - OK Create station
-- PENDING Business rule : at most 2 charges going on
+- OK Business rule : at most 2 charges going on
 - OK Plug backend on frontend & abstraction for endpoints and config
 - OK Docker Angular
 - OK Docker Backend
