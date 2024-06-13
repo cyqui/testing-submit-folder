@@ -12,7 +12,7 @@ docker-compose up
 ```
 
 - UI will be on http://localhost:8089
-- API will be on http://localhost:3003/charge-stations
+- API will be on http://localhost:3002/charge-stations
 - Mongo is reachable using : mongodb://root:hello@localhost:27020/
 ( will be provisionned with data example using mongo init script )
 
