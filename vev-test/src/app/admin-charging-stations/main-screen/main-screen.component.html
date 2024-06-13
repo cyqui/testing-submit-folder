@@ -1,5 +1,10 @@
 <h2>Charging stations</h2>
-<app-charging-stations-table [stations$]="stations$"></app-charging-stations-table>
+<app-charging-stations-table
+  #table
+  (start)="start($event)"
+  (stop)="stop($event)"
+  (delete)="delete($event)"
+  [stations$]="stations$"></app-charging-stations-table>
 
 <h2>Create a charging station</h2>
 <app-charging-stations-form (submit)="create($event)"></app-charging-stations-form>

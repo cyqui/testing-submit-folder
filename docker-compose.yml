@@ -1,5 +1,17 @@
 version: '3'
 services:
+  webapp:
+    build: 
+      context: ./vev-test
+      dockerfile: Dockerfile
+    restart: always
+    depends_on:
+      - api
+    networks: 
+      - mongo-compose-network
+    ports:
+      - 8089:80
+
   mongo:
     image: mongo
     restart: always
@@ -19,14 +31,16 @@ services:
       context: ./vev-test-backend
       dockerfile: Dockerfile
     restart: always
+    depends_on:
+      - mongo
     networks: 
       - mongo-compose-network
     environment:
-      - MONGO_URI=mongodb://root:hello@localhost:27020/?authSource=admin&authMechanism=SCRAM-SHA-256
-      - MONGO_DB=
+      - MONGO_URI=mongodb://root:hello@mongo:27017/?authSource=admin&authMechanism=SCRAM-SHA-256
+      - MONGO_DB=vevBackendTest
     ports:
     # Using port 3K Most of the time. alias for convenience.
-      - 3002:3002
+      - 3002:3000
 
 
 networks:

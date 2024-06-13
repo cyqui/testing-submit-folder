@@ -1,4 +1,5 @@
 <button class="action"
+        (click)="click.emit()"
         [disabled]="disabled"
         [attr.type]="submit !== false ? 'submit' : 'button'"
         [class.formButton]="formButton"

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { AdminChargingStationsRoutingModule } from './admin-charging-stations-routing.module';
 import { MainScreenComponent } from './main-screen/main-screen.component';
 import {AdminUiModule} from "../admin-ui/admin-ui.module";
@@ -12,20 +11,23 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatDialogModule} from "@angular/material/dialog";
+import {VevApiModule} from "../vev-api/vev-api.module";
 
 const matModules = [
   MatTableModule,
   MatButtonModule,
   MatFormFieldModule,
   MatInputModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatDialogModule
 ];
 
 @NgModule({
   declarations: [
     MainScreenComponent,
     TableComponent,
-    FormComponent
+    FormComponent,
   ],
   imports: [
     CommonModule,
@@ -33,6 +35,7 @@ const matModules = [
     AdminUiModule,
     FormsModule,
     ReactiveFormsModule,
+    VevApiModule,
     ...matModules,
   ]
 })

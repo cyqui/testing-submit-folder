@@ -15,13 +15,7 @@ export class FormComponent {
   @Output()
   submit: EventEmitter<ChargingStation> = new EventEmitter<ChargingStation>();
 
-  /**
-   * • Nom
-   * • Modèle : Ne peut contenir que des chiffres et des lettres.
-   * • Marque : 20 caractères maximum, uniquement des lettres.
-   * • Puissance : Maximum de 22 kW, minimum de 5 kW.
-   * • Statut : Peut être AVAILABLE ou CHARGING.
-   */
+
   form: FormGroup = new FormGroup({
     name: new FormControl('', [
       Validators.required
@@ -43,13 +37,7 @@ export class FormComponent {
   });
 
   constructor() {
-    // testing
-    this.form.setValue({
-      name: 'ok',
-      brand: 'okok',
-      model: 'okok',
-      power: 5
-    });
+
   }
 
   ngOnInit(): void {
@@ -60,7 +48,7 @@ export class FormComponent {
     this.submit.emit(this.form.value);
   }
 
-  hasError(fieldName: string, errorType: string|null = null): Boolean {
+  hasError(fieldName: string, errorType: string|null = null): boolean {
     // if it hasn't been changed, we dont want to show errors.
     if (!this.form.get(fieldName)?.touched) {
       return false;

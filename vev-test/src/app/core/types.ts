@@ -14,7 +14,12 @@ export interface ChargingStation {
   // Power : Max of 22 kW, min of 5 kW.
   power: number;
   inUse: boolean;
+  _id: string;
 }
 
+// true if same station
+export const isSameStation = (stationA: ChargingStation, stationB: ChargingStation) => (
+  stationA._id === stationB._id
+)
 // Monad for convenience
 export type Maybe<T = any> = T | null | undefined;

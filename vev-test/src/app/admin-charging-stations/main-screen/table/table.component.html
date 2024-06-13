@@ -1,38 +1,56 @@
 <ng-container *ngIf="(stations$ | async) as _stations; else loading">
-<table mat-table [dataSource]="_stations" class="mat-elevation-z8">
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef>name</th>
-    <td mat-cell *matCellDef="let element">{{element.name}}</td>
-  </ng-container>
-  <ng-container matColumnDef="model">
-    <th mat-header-cell *matHeaderCellDef>model</th>
-    <td mat-cell *matCellDef="let element">{{element.model}}</td>
-  </ng-container>
-  <ng-container matColumnDef="brand">
-    <th mat-header-cell *matHeaderCellDef> brand </th>
-    <td mat-cell *matCellDef="let element">{{element.brand}}</td>
-  </ng-container>
-  <ng-container matColumnDef="power">
-    <th mat-header-cell *matHeaderCellDef> power </th>
-    <td mat-cell *matCellDef="let element"> {{element.power}} </td>
-  </ng-container>
-  <ng-container matColumnDef="status">
-    <th mat-header-cell *matHeaderCellDef>status</th>
-    <td mat-cell *matCellDef="let element">
-      <span class="charging" *ngIf="element.inUse">CHARGING</span>
-      <span class="available" *ngIf="!element.inUse">AVAILABLE</span>
-    </td>
-  </ng-container>
-  <ng-container matColumnDef="actions">
-    <th mat-header-cell *matHeaderCellDef></th>
-    <td mat-cell *matCellDef="let element">
-      <app-button *ngIf="!element.inUse" [danger]="element.inUse">Start</app-button>
-      <app-button *ngIf="element.inUse" [danger]="element.inUse">Stop</app-button>
-    </td>
-  </ng-container>
-  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-  <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
-</table>
+  <table #table mat-table [dataSource]="_stations" class="mat-elevation-z8">
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" [attr.colspan]="columnsToDisplay.length">
+        No stations registered
+      </td>
+    </tr>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>name</th>
+      <td mat-cell *matCellDef="let element">{{element.name}}</td>
+    </ng-container>
+    <ng-container matColumnDef="model">
+      <th mat-header-cell *matHeaderCellDef>model</th>
+      <td mat-cell *matCellDef="let element">{{element.model}}</td>
+    </ng-container>
+    <ng-container matColumnDef="brand">
+      <th mat-header-cell *matHeaderCellDef> brand</th>
+      <td mat-cell *matCellDef="let element">{{element.brand}}</td>
+    </ng-container>
+    <ng-container matColumnDef="power">
+      <th mat-header-cell *matHeaderCellDef> power</th>
+      <td mat-cell *matCellDef="let element"> {{element.power}} </td>
+    </ng-container>
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>status</th>
+      <td mat-cell *matCellDef="let element">
+        <span class="charging" *ngIf="element.inUse">CHARGING</span>
+        <span class="available" *ngIf="!element.inUse">AVAILABLE</span>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element">
+        <div class="actions">
+          <app-button
+            *ngIf="!element.inUse"
+            (click)="start.emit(element)"
+            [danger]="element.inUse">Start
+          </app-button>
+          <app-button
+            (click)="stop.emit(element)"
+            *ngIf="element.inUse" [danger]="element.inUse">Stop
+          </app-button>
+          <app-button
+            (click)="delete.emit(element)"
+            [formButton]="true">Delete
+          </app-button>
+        </div>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+  </table>
 </ng-container>
 <ng-template #loading>
   Loading..
