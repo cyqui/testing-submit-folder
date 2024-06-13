@@ -1,7 +1,15 @@
+# Overview 
+
+- Folder [vev-test](https://github.com/cyqui/testing-submit-folder/tree/main/vev-test) holds the frontend. Made with Angular 17.
+- Folder [vev-test-backend](https://github.com/cyqui/testing-submit-folder/tree/main/vev-test-backend) holds the backend. Made with NestJS 10.
+- Folder [mongo-init](https://github.com/cyqui/testing-submit-folder/tree/main/mongo-init) holds the init script for convenience (base data & unique index for consistency)
 
 # Usage 
 
-docker-compose up 
+Run 
+```
+docker-compose up
+```
 
 - UI will be on http://localhost:8089
 - API will be on http://localhost:3003/charge-stations
