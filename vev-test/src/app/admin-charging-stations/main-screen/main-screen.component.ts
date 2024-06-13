@@ -39,16 +39,19 @@ export class MainScreenComponent {
   start(station: ChargingStation) {
     this.snackBar.open('Creating charge station.')
     this.mainApi.setInUse(station, true).pipe(first()).subscribe(r => {
+      if (!r) {
+        this.snack('! Charge cannot start (at most 2 stations) !');
+      } else {
+        this.snack('Charge started');
+      }
       this.stations$ = this.mainApi.find();
-      this.reRenderTable();
-      this.snack('Charge started');
     });
   }
 
   stop(station: ChargingStation) {
     this.mainApi.setInUse(station, false).pipe(first()).subscribe(r => {
       this.stations$ = this.mainApi.find();
-      this.reRenderTable();
+      // this.reRenderTable();
       this.snack('Charge stopped');
     });
   }
