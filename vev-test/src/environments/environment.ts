@@ -4,7 +4,7 @@ export const environment: {
   vev: VevApiConfiguration
 } = {
   vev: {
-    apiRoot: 'http://localhost:3003',
+    apiRoot: 'http://localhost:3002',
     endpoints: {
       chargeStationList: () => '/charge-stations',
       chargeStationDelete: (station) => `/charge-stations/${station._id}`,
