@@ -1,5 +1,5 @@
 form {
-  gap: 20px 0;
+  gap: 10px 0;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
@@ -7,6 +7,12 @@ form {
 
 input {
   width: 139px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  border: 1px solid grey
+}
+label {
+  padding: 5px 0;
 }
 
 small {
