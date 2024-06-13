@@ -6,13 +6,24 @@
   background-color: #4CAF50;
 }
 .mat-mdc-raised-button.danger:hover {
-  background-color: #f0fff3;
+  background-color: lighten(#FF5252, 80);
 }
+
 .mat-mdc-raised-button.danger {
-  color: #f0fff3;
+  color: white;
   background-color: #FF5252;
 }
+
 .mat-mdc-raised-button.formButton {
   color: white;
   background-color: black;
+}
+
+.mat-mdc-raised-button.formButton:hover {
+  color: white;
+  background-color: lighten(black, 20);
+}
+.mat-mdc-raised-button.formButton:disabled {
+  color: white;
+  background-color: lighten(black, 40);
 }
