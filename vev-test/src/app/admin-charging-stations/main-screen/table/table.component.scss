@@ -16,6 +16,9 @@ table {
     width: 100%;
     flex-direction: row;
   }
+  th {
+    color: #757575;
+  }
 }
 :host ::ng-deep tr {
   border-bottom: 1px solid #ddd;

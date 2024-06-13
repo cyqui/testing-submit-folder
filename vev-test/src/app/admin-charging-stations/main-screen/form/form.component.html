@@ -1,14 +1,14 @@
 <form [formGroup]="form" (ngSubmit)="doSubmit()">
   <div class="part part1">
     <span class="item">
-      <label for="name">name</label>
+      <label for="name">Name</label>
       <input id="name" placeholder="name" type="text" formControlName="name">
       <div *ngIf="hasError('name')">
         <small *ngIf="hasError('name', 'required')">name is required.</small>
       </div>
     </span>
     <span class="item">
-      <label for="model">model</label>
+      <label for="model">Model</label>
       <input id="model" placeholder="model" type="text" formControlName="model">
       <div *ngIf="hasError('model')">
         <small *ngIf="hasError('model', 'required')">model is required.</small>
@@ -18,7 +18,7 @@
   </div>
   <div class="part part2">
     <span class="item">
-      <label for="brand">brand</label>
+      <label for="brand">Brand</label>
       <input id="brand" placeholder="brand" type="text" formControlName="brand">
       <div *ngIf="hasError('brand')">
         <small *ngIf="hasError('brand', 'required')">brand is required.</small>
@@ -27,7 +27,7 @@
       </div>
     </span>
     <span class="item">
-      <label for="power">power</label>
+      <label for="power">Power (kW)</label>
       <input id="power"
              max="22"
              min="5"
