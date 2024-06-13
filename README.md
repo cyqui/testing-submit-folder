@@ -29,8 +29,9 @@ docker-compose up
 - OK Docker Backend
 - OK Docker Mongo with constraint on model/name/brand.
 - OK Visual feedback for frontend actions (create, delete, start/stop)
-- KO Unit tests on backend
-- KO Make isomockup or at least, pretty (bare material design)
+- KO/OK Unit tests on backend => there is one !
+- OK Make isomockup or at least, pretty (bare material design)
+- KO Code comment
 - KO Doc
 - KO Visual feedback for backend actions (loading)
 - KO Lint 
