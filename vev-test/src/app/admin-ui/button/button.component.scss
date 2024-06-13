@@ -1,44 +1,18 @@
-.action {
-  background-color: #44c767;
-  border-radius: 17px;
-  border: 1px solid #18ab29;
-  display: inline-block;
-  cursor: pointer;
-  color: #ffffff;
-  font-family:Arial;
-  font-size: 15px;
-  padding: 5px 5px;
-  text-decoration: none;
-  text-shadow: 0px 1px 0px #2f6627;
-
-  &.danger {
-    background-color: red;
-    border:1px solid #ab1838;
-    text-shadow:0px 1px 0px #ab1838;
-  }
-  &.formButton {
-    background-color: black;
-    color: white;
-    border:1px solid black;
-    text-shadow:0px 1px 0px black;
-  }
-
-  &:disabled {
-    background-color: grey;
-  }
+.mat-mdc-raised-button.success:hover {
+  background-color: #f0fff3;
 }
-
-.action:hover {
-  background-color:#5cbf2a;
-  &.danger {
-    background-color: #975d5d;
-  }
-  &.formButton {
-    background-color: #131212FF;
-  }
+.mat-mdc-raised-button.success {
+  color: #f0fff3;
+  background-color: #4CAF50;
 }
-.action:active {
-  position:relative;
-  top:1px;
+.mat-mdc-raised-button.danger:hover {
+  background-color: #f0fff3;
 }
-
+.mat-mdc-raised-button.danger {
+  color: #f0fff3;
+  background-color: #FF5252;
+}
+.mat-mdc-raised-button.formButton {
+  color: white;
+  background-color: black;
+}

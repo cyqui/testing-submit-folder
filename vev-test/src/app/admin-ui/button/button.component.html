@@ -1,8 +1,11 @@
-<button class="action"
-        (click)="click.emit()"
-        [disabled]="disabled"
-        [attr.type]="submit !== false ? 'submit' : 'button'"
-        [class.formButton]="formButton"
-        [class.danger]="danger">
+ <button
+    (click)="click.emit()"
+    [disabled]="disabled"
+    [attr.type]="submit !== false ? 'submit' : 'button'"
+    [class.formButton]="formButton"
+    [class.danger]="danger"
+    [class.success]="!formButton && !danger "
+    mat-raised-button
+    mat-flat-button>
   <ng-content></ng-content>
 </button>
