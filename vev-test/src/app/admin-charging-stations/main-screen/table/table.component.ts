@@ -11,7 +11,6 @@ import {MatTable} from "@angular/material/table";
 export class TableComponent {
 
   columnsToDisplay: string[] = ['name', 'brand', 'model', 'power', 'status', 'actions' ];
-  @ViewChild(MatTable) table: MatTable<ChargingStation>;
 
   @Input()
   stations$: Observable<ChargingStation[]> = of([]);
@@ -24,9 +23,4 @@ export class TableComponent {
 
   @Output()
   delete: EventEmitter<ChargingStation> = new EventEmitter<ChargingStation>();
-
-  // out of time to rework. It's dirty i know and i should have use dataSource :(
-  renderRows() {
-    this.table.renderRows();
-  }
 }

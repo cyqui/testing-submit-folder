@@ -2,7 +2,6 @@ import {Component, ViewChild} from '@angular/core';
 import {ChargingStationsApiService} from "../../vev-api/charging-stations-api.service";
 import {ChargingStation} from "../../core/types";
 import {first, Observable, of} from "rxjs";
-import {TableComponent} from "./table/table.component";
 import {MatDialog} from "@angular/material/dialog";
 import {StopAndDeletePromptComponent} from "./stop-and-delete-prompt/stop-and-delete-prompt.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -14,13 +13,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class MainScreenComponent {
   stations$: Observable<ChargingStation[]> = of([]);
-  _table: TableComponent;
-  // out of time to rework. It's dirty i know and i should probably have used dataSource :(
-  @ViewChild('table') set table(content: TableComponent) {
-    if(content) { // initially setter gets called with undefined
-      this._table = content;
-    }
-  }
+
   constructor(
     private mainApi: ChargingStationsApiService,
     private dialog: MatDialog,
@@ -51,7 +44,6 @@ export class MainScreenComponent {
   stop(station: ChargingStation) {
     this.mainApi.setInUse(station, false).pipe(first()).subscribe(r => {
       this.stations$ = this.mainApi.find();
-      // this.reRenderTable();
       this.snack('Charge stopped');
     });
   }
@@ -70,11 +62,11 @@ export class MainScreenComponent {
   create(station: ChargingStation) {
     this.mainApi.create(station).pipe(first()).subscribe(r => {
       this.stations$ = this.mainApi.find();
-      this.snack('Charge station added');
+      if (!r) {
+        this.snack('Charge station is existing');
+      } else {
+        this.snack('Charge station added');
+      }
     });
-  }
-  // out of time to rework. It's dirty i know and i should probably have used dataSource :(
-  reRenderTable() {
-    this._table.renderRows();
   }
 }
